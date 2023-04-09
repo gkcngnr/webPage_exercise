@@ -24,13 +24,13 @@ form.addEventListener("submit", e=> {
     
     result.classList.remove("d-none");
 
-    let puan = 0;
-    const bastir = setInterval(() => {
-        result.querySelector("span").textContent = `%${puan}`;
-        if (puan === score) {
-            clearInterval(bastir);
+    let points = 0;
+    const stop = setInterval(() => {
+        result.querySelector("span").textContent = `%${points}`;
+        if (points === score) {
+            clearInterval(stop);
         } else {
-            puan++
+            points++
         }
     }, 5)
     
