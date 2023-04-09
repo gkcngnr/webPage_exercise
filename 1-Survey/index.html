@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Evden Çalışma Anketi</title>
+</head>
+
+<body>
+
+    <section id="header">
+        <div class="bg-white text-center py-3">
+            <div class="container">
+                <h2 class="text-danger display-4 my-4">Evden Çalışma Anketi</h2>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+    <section class="result p-5 text-center display-6 border border-2 border-danger mb-4 d-none">
+        <div class="container lead">
+            <p><span class="display-6 text-danger fw-bolder ">" 0% "</span> Ofise Dönmek İstiyorsun</p>
+        </div>
+        <div class="progress progress-striped active" role="progressbar" aria-valuenow="100"
+            aria-valuemin="0" aria-valuemax="100" style="height: 20px;">
+            <div id="bar" class="progress-bar progress-bar-striped bg-danger"></div>
+        </div>
+    </section>
+    </div>
+
+
+    <section id="questions">
+        <div class="bg-secondary py-3" >
+            <div class="container">
+                <form class="text-white question-form">
+                    <div class="my-4">
+                        <p>1. Ofiste daha verimli çalışıyorum.</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1" id="evet1" value="e" tagname="q">
+                            <label class="form-check-label" for="evet1">
+                                Evet
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1" id="hayir1" value="h" tagname="q">
+                            <label class="form-check-label" for="hayir1">
+                                Hayır
+                            </label>
+                        </div>
+                    </div>
+                    <div class="my-4">
+                        <p>2. Ofise tam zamanlı dönmek istiyorum.</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" id="evet2" value="e" tagname="q">
+                            <label class="form-check-label" for="evet2">
+                                Evet
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" id="hayir2" value="h" tagname="q">
+                            <label class="form-check-label" for="hayir2">
+                                Hayır
+                            </label>
+                        </div>
+                    </div>
+                    <div class="my-4">
+                        <p>3. Evdeyken teknik sorunlar daha zor çözülüyor.</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" id="evet3" value="e">
+                            <label class="form-check-label" for="evet3">
+                                Evet
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" id="hayir3" value="h">
+                            <label class="form-check-label" for="hayir3">
+                                Hayır
+                            </label>
+                        </div>
+                    </div>
+                    <div class="my-4">
+                        <p>4. Evdeyken Jiradaki haftalık taskları yetiştirmekte zorlanıyorum.</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="evet4" value="e">
+                            <label class="form-check-label" for="evet4">
+                                Evet
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="hayir4" value="h">
+                            <label class="form-check-label" for="hayir4">
+                                Hayır
+                            </label>
+                        </div>
+                    </div>
+                    <div class="my-4">
+                        <p>5. Evden çalışmak sosyal hayatımı olumsuz etkiledi.</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="evet5" value="e">
+                            <label class="form-check-label" for="evet5">
+                                Evet
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="hayir5" value="h">
+                            <label class="form-check-label" for="hayir5">
+                                Hayır
+                            </label>
+                        </div>
+                    </div>
+                    <div class="my-4">
+                        <p>6. Evdeyken daha yoğun çalışıyorum.</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q6" id="evet6" value="e">
+                            <label class="form-check-label" for="evet6">
+                                Evet
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q6" id="hayir6" value="h">
+                            <label class="form-check-label" for="hayir6">
+                                Hayır
+                            </label>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5 mb-3">
+                       <input type="submit" class="btn btn-light" onclick="location.href='#header';">
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+    <section id="footer">
+        <div class="bg-white text-end py-3">
+            <div class="container">
+                <h2 class="text-danger my-4 lead">NGG</h2>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="anket.js"></script>
+</body>
+
+</html>
