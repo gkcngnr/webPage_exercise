@@ -41,7 +41,8 @@ form.addEventListener("submit", e=> {
 })
 
     
-
+  // keep this function call here 
+  console.log(LongestWord("asd fes gaws"));
 
 
 
