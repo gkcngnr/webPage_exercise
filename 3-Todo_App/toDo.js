@@ -12,16 +12,7 @@ function generateNew(newDo) {
     `;
 }
 
-const user = []
-const spanValue = document.querySelectorAll(".todos")
-spanValue.forEach((doo) => {
-    user.push(doo.innerText.toLowerCase())
-})
-
-    
-addNew.addEventListener('submit', e=> {
-    e.preventDefault();
-    
+const trynew = () => {
     const newDo = addNew.add.value.trim();  //öndeki sondaki boşlukları siler. trimEnd ve trimStart da var
     
     if (user.includes(newDo.toLowerCase()) ) {
@@ -39,38 +30,29 @@ addNew.addEventListener('submit', e=> {
         //const asd = document.getElementsByName("add")[0].value = ""
         addNew.reset();
     } 
+}
+
+const user = []
+const spanValue = document.querySelectorAll(".todos")
+spanValue.forEach((doo) => {
+    user.push(doo.innerText.toLowerCase())
+})
+
+    
+addNew.addEventListener('submit', e=> {
+    e.preventDefault();
+    trynew();
 });
+
+document.querySelector(".new").addEventListener("click", e=> {
+    trynew();
+})
 
 dos.addEventListener("click", e=> {
     if (e.target.classList.contains("del")) {
         e.target.parentElement.remove();
     }
 })
-
-document.querySelector(".new").addEventListener("click", e=> {
-    const newDo = addNew.add.value.trim();  //öndeki sondaki boşlukları siler. trimEnd ve trimStart da var
-
-if (user.includes(newDo.toLowerCase()) ) {
-    document.querySelector(".exist").classList.remove("d-none");
-    
-    var blink = document.querySelector('.blink');
-    
-    setInterval(function() {
-        blink.style.opacity = (blink.style.opacity == 0.6 ? 1 : 0.6);
-    }, 500);
-    
-    
-} else if (newDo.length) {
-    generateNew(newDo)
-    user.push(newDo)
-    document.querySelector(".exist").classList.add("d-none");
-    //const asd = document.getElementsByName("add")[0].value = ""
-    addNew.reset();
-    
-    
-} 
-})
-
 
 
 const filterToDo = (term) => {
@@ -83,9 +65,6 @@ const filterToDo = (term) => {
     Array.from(dos.children)
     .filter(todo => todo.textContent.toLowerCase().includes(term)) 
     .forEach(todo => todo.classList.remove("filtered"))
-    
-
-
 }
 
 find.addEventListener("keyup", () => {
