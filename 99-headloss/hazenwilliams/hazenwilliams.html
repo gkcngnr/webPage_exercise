@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container pb-3">
         <div class="text-center banner">
             <h1>Head Loss Calculator</h1>
             <h3>Pressurized - Hazen–Williams</h3>
@@ -33,7 +33,7 @@
         </div>
        
         
-        <form id="form" class="m-5">
+        <form id="form" class="m-5 mb-2">
             <div class="row mb-3">
                 <div class="btn-group" role="group" aria-label="Pipe Type">
                     <input type="radio" class="btn-check" name="pipetype" id="pe100" autocomplete="off" checked >
@@ -54,7 +54,7 @@
                     
                 </div>
                 <div class="col-3">
-                    <label class="col-form-label">Flow Rate (Q) :</label>
+                    <label class="col-form-label">Flow Rate (Q):</label>
                 </div>
                 <div class="col-3">
                     <input id="flowrate" type="number" step="0.0001" class="form-control" required>
@@ -73,7 +73,7 @@
                     
                 </div>
                 <div class="col-3">
-                    <label class="col-form-label">Diameter (D) :</label>
+                    <label class="col-form-label">Diameter (D):</label>
                 </div>
                 <div class="col-3">
                     <select id="diameter" class="form-select" aria-label="diameter">
@@ -82,13 +82,8 @@
                 </div>
                 <div class="col-2">
                     <select id="pressure" class="form-select" aria-label="pressure">
-                        <option value="PN8">PN8</option>
-                        <option value="PN10" selected>PN10</option>
-                        <option value="PN12.5">PN12.5</option>
-                        <option value="PN16">PN16</option>
-                        <option value="PN20">PN20</option>
-                        <option value="PN25">PN25</option>
-                      </select>
+
+                    </select>
                 </div>
             </div>
 
@@ -97,14 +92,29 @@
                     
                 </div>
                 <div class="col-3">
-                    <label class="col-form-label">Lining :</label>
+                    <label class="col-form-label">Inner Lining:</label>
                 </div>
                 <div class="col-3">
-                    <input id="lining" type="number" step="0.0001" class="form-control" required>
+                    <input id="lining" type="number" step="0.01" class="form-control" value="0" >
                 </div>
                 <div class="col-2">
                     <div  class="form-control"  >mm</div>
 
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-2">
+                    
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label">Local Head Loss (%):</label>
+                </div>
+                <div class="col-3">
+                    <input id="localHead" type="number" step="1" class="form-control">
+                </div>
+                <div class="col-2">
+                    <div  class="form-control"  >%</div>
                 </div>
             </div>
 
@@ -113,7 +123,7 @@
                     
                 </div>
                 <div class="col-3">
-                    <label class="col-form-label">Length (L) :</label>
+                    <label class="col-form-label">Length (L):</label>
                 </div>
                 <div class="col-3">
                     <input id="pipeLength" type="number" step="0.01" class="form-control" required>

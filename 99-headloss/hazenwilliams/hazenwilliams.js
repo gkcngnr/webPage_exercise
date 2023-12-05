@@ -7,6 +7,7 @@ const pressures = document.getElementById("pressure");
 const lining = document.getElementById("lining");
 const pipeLength = document.getElementById("pipeLength");
 const results = document.querySelector(".result");
+const localHead = document.getElementById("localHead");
 
 
 
@@ -28,22 +29,39 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             pe100Data = data;
-            diameterPE(); // Burada diameterPE() çağrılabilir.
+            pressurePE()
+            
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
         });
 });    
 
+//STEEL JSON dosyasndan çekiliyor.
+fetch('../data/STEEL.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();// JSON verisini döndür
+        })
+        .then(data => {
+            steelData = data;
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+
+
 //inputları temizleme
 function clearInput() {
     flowrate.value=""
     diameter.value=""
-    lining.value=""
     pipeLength.value=""
     diameter.innerHTML=""
     lining.value=""
-    
+    localHead.value=""
+    pressures.innerHTML=""
 }
 
 //pipe type radio buttonlarına change eventi eklendi
@@ -52,37 +70,78 @@ for (const pipeType of pipeTypes ) {
 }
 
 
-//pressure buttonlarına change eventi eklendi
-pressure.addEventListener("change", diameterPE);
+
+
 
 
 //Seçili boru tipi radio buttonununn yapacakları fonksiyonu
+let selectedPipeType;
 function pipeTypeSelection(event) {
     
     const selectedType = event.target;
     if (selectedType.id === "pe100") {
         clearInput()
-        pressures.classList.add("show");
-        lining.parentElement.parentElement.classList.add("hide");
-        diameterPE()
+        pressurePE()
+        
         
 
     } else if (selectedType.id === "steel") {
         clearInput()
-        pressures.classList.remove("show");
-        pressures.classList.add("hide");
-        lining.parentElement.parentElement.classList.remove("hide")
-        lining.required = true;
+        diameterSt()
+        
     }
 }
 
 // basınca gore PE çap getirme
+function pressurePE() {
+    Object.keys(pe100Data).forEach(key => {
+        if (key === "PN10") {
+            pressures.innerHTML += `<option value="${key}" selected>${key}</option>`
+        } else {
+        pressures.innerHTML += `<option value="${key}">${key}</option>`
+        }
+    })
+    
+    diameterPE()
+}
+    
+
 function diameterPE() {
+    selectedPipeType = "PE100"
+    pressure.addEventListener("change", diameterPE)     //pressure buttonlarına change eventi eklendi
+    diameter.removeEventListener("change", thicknessSt)
+    lining.parentElement.parentElement.classList.add("hide");
     lining.required = false;
-    diameter.innerHTML = ""
+    diameter.innerHTML = ""     
     pe100Data[pressures.value].forEach(option => {
         diameter.innerHTML += `<option>${option.diameter}</option>`
     })
+    }
+    
+
+//Çelik çapa göre et kalınlığı seçenekleri
+function thicknessSt() {
+    pressures.innerHTML = ""
+    for (let i=0; i<steelData[diameter.value][0].thickness.length; i++) {
+        
+        pressures.innerHTML += `<option>e=${steelData[diameter.value][0].thickness[i]}</option>`
+    }
+}
+
+
+//Çelik çap seçenekleri
+function diameterSt() {
+    selectedPipeType = "St,"
+    pressure.removeEventListener("change", diameterPE)
+    diameter.addEventListener("change", thicknessSt)
+    lining.value = 0
+    lining.required = true;
+    lining.parentElement.parentElement.classList.remove("hide")
+    Object.keys(steelData).forEach(key => {
+        diameter.innerHTML += `<option>${key}</option>`
+        
+    })
+    thicknessSt()
 }
 
 
@@ -113,19 +172,25 @@ function innerDiameterCalculation() {
         if (pipeType.checked) {
             selectedPipe = pipeType.id}
         }
-    if (selectedPipe === "pe100") {
-        console.log(HazenWilliamsC.pe100)
-        innerDiameter = pe100Data[pressures.value].find(item => item.diameter == diameter.value).inner;
-        C = HazenWilliamsC.pe100
-    }
-    return innerDiameter, C
+            if (selectedPipe === "pe100") {
+                innerDiameter = pe100Data[pressures.value].find(item => item.diameter == diameter.value).inner;
+                C = HazenWilliamsC.pe100
+            } else if (selectedPipe === "steel") {
+                thicknessValue1 = parseFloat((pressures.value).slice(2))
+                thicknessValue2 = parseFloat(lining.value)
+                innerDiameter = (steelData[diameter.value][0].outerDiameter - 2*(thicknessValue1 + thicknessValue2)).toFixed(2);
+                C = HazenWilliamsC.steel
+            }
+            return innerDiameter, C
 }
 
 // A - J - JL Hesaplama
 let area;
 let velocity;
 let headloss;
+let localHeadloss;
 let totalHeadloss;
+let total;
 function headlossCalculation() {
     unitConversion()
     innerDiameterCalculation()
@@ -133,7 +198,13 @@ function headlossCalculation() {
     velocity = (calculatedFlowrate / area).toFixed(2);
     headloss = ((10.7 * (calculatedFlowrate/C)**1.852 ) / (innerDiameter/1000)**4.87).toFixed(6)
     headloss2 = ((10.583 * (calculatedFlowrate)**1.85 ) / (C**1.85 * (innerDiameter/1000)**4.87)).toFixed(6)
-    totalHeadloss = (headloss * pipeLength.value).toFixed(2)
+    totalHeadloss = (headloss * pipeLength.value).toFixed(2);
+    if (localHead.value>0) {
+        localHeadloss = (totalHeadloss * (localHead.value)/100).toFixed(2);
+    } else {
+        localHeadloss = 0;
+    }
+    total = (parseFloat(totalHeadloss) + parseFloat(localHeadloss)).toFixed(2);
 }
 
 //sonuçları yazdırma
@@ -149,7 +220,7 @@ function resultsContainer() {
 
         <div class="card" style="width: 18rem;">
             <h4 class="card-title">Result-${resultCount}</h4>
-            <hr>
+            <hr class="m-1">
             <div class="card-body">
                 <div class="row">
                     <div class="col-2"> Q </div>
@@ -159,7 +230,7 @@ function resultsContainer() {
                 <div class="row">
                     <div class="col-2"> D </div>
                     <div class="col-1"> = </div>    
-                    <div class="col-8"> Ø${diameter.value}PE100 ${pressure.value} </div>  
+                    <div class="col-8"> Ø${diameter.value}mm ${selectedPipeType} ${pressure.value} </div>  
                 </div>
                 <div class="row">
                     <div class="col-2"> V </div>
@@ -169,12 +240,22 @@ function resultsContainer() {
                 <div class="row">
                     <div class="col-2"> J </div>
                     <div class="col-1"> = </div>    
-                    <div class="col-8"> ${headloss} m/m </div>  
+                    <div class="col-8"> ${headloss} m/m (C:${C})</div>  
                 </div>
-                <div class="row">
+                    <div class="row">
                     <div class="col-2"> JL </div>
                     <div class="col-1"> = </div>    
                     <div class="col-8"> ${totalHeadloss} m </div>  
+                </div>
+                <div class="row">
+                    <div class="col-2"> % </div>
+                    <div class="col-1"> = </div>    
+                    <div class="col-8"> ${localHeadloss} m (JL x ${localHead.value}%) </div>  
+                </div>
+                <div class="row">
+                    <div class="col-2"> JLt </div>
+                    <div class="col-1"> = </div>    
+                    <div class="col-8"> ${total} m </div>  
                 </div>
             </div>
     </div>`
@@ -185,6 +266,7 @@ form.addEventListener("submit", e => {
     e.preventDefault();
     headlossCalculation()
     resultsContainer()
+    console.log(lining.value)
 })
 
 
