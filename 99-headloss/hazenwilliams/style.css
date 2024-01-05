@@ -1,10 +1,13 @@
 body {
     background-image: url("../assets/background.jpg");
+    backdrop-filter: blur(1.5px);
 
 }
 
 .container {
     background: rgb(231, 206, 174); /* rgb(237, 187, 121); */
+    opacity: 0.9;
+    
     min-height: 1000px;
     max-width: 1000px;
     margin: 20px auto;
@@ -96,4 +99,12 @@ body {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
+}
+
+.form-control:disabled {
+    background-color: rgb(235, 226, 226);
+}
+
+.danger {
+    color: red;
 }

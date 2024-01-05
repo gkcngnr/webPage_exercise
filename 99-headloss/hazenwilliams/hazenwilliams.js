@@ -8,6 +8,12 @@ const lining = document.getElementById("lining");
 const pipeLength = document.getElementById("pipeLength");
 const results = document.querySelector(".result");
 const localHead = document.getElementById("localHead");
+const thickness = document.getElementById("thickness");
+const inner = document.getElementById("innerDiameter");
+const diameterRow = document.getElementById("diameterRow")
+const diameterRowFree = document.getElementById("diameterRowFree")
+const diameterfree = document.getElementById("diameterfree")
+const coefficient = document.getElementById("coefficient")
 
 
 
@@ -52,16 +58,34 @@ fetch('../data/STEEL.json')
             console.error('There has been a problem with your fetch operation:', error);
         });
 
+//DUCTILE JSON dosyasından çekiliyor
+fetch('../data/DUCTILE.json')
+        .then(response => {
+            if(!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then (data => {
+            ductileData = data;
+        })
+        .catch(error => {
+            console.log('There has been a problem with your fetch operation:', error);
+        });
 
 //inputları temizleme
 function clearInput() {
     flowrate.value=""
     diameter.value=""
+    diameterfree.value=""
     pipeLength.value=""
     diameter.innerHTML=""
     lining.value=""
     localHead.value=""
     pressures.innerHTML=""
+    inner.value=""
+    thickness.value=""
+    coefficient.value=""
 }
 
 //pipe type radio buttonlarına change eventi eklendi
@@ -70,25 +94,23 @@ for (const pipeType of pipeTypes ) {
 }
 
 
-
-
-
-
 //Seçili boru tipi radio buttonununn yapacakları fonksiyonu
 let selectedPipeType;
 function pipeTypeSelection(event) {
-    
+    clearInput()
     const selectedType = event.target;
     if (selectedType.id === "pe100") {
-        clearInput()
+        
         pressurePE()
-        
-        
 
     } else if (selectedType.id === "steel") {
-        clearInput()
         diameterSt()
         
+    } else if (selectedType.id === "ductile"){
+        pressureDc()
+        innerDiameterShow()
+    } else if(selectedType.id === "free"){
+        freeCalc()
     }
 }
 
@@ -98,7 +120,7 @@ function pressurePE() {
         if (key === "PN10") {
             pressures.innerHTML += `<option value="${key}" selected>${key}</option>`
         } else {
-        pressures.innerHTML += `<option value="${key}">${key}</option>`
+            pressures.innerHTML += `<option value="${key}">${key}</option>`
         }
     })
     
@@ -108,9 +130,16 @@ function pressurePE() {
 
 function diameterPE() {
     selectedPipeType = "PE100"
+    pressure.removeEventListener("change", diameterDC)
     pressure.addEventListener("change", diameterPE)     //pressure buttonlarına change eventi eklendi
     diameter.removeEventListener("change", thicknessSt)
+    
     lining.parentElement.parentElement.classList.add("hide");
+    thickness.parentElement.parentElement.classList.add("hide");
+    inner.parentElement.parentElement.classList.add("hide");
+    diameterRowFree.classList.add("hide");
+    diameterRow.classList.remove("hide");
+    coefficient.parentElement.parentElement.classList.add("hide");
     lining.required = false;
     diameter.innerHTML = ""     
     pe100Data[pressures.value].forEach(option => {
@@ -134,14 +163,71 @@ function diameterSt() {
     selectedPipeType = "St,"
     pressure.removeEventListener("change", diameterPE)
     diameter.addEventListener("change", thicknessSt)
-    lining.value = 0
+    lining.disabled = false;
     lining.required = true;
-    lining.parentElement.parentElement.classList.remove("hide")
+    lining.parentElement.parentElement.classList.remove("hide");
+    thickness.parentElement.parentElement.classList.add("hide");
+    inner.parentElement.parentElement.classList.remove("hide");
+    diameterRowFree.classList.add("hide");
+    diameterRow.classList.remove("hide");
+    coefficient.parentElement.parentElement.classList.add("hide");
     Object.keys(steelData).forEach(key => {
         diameter.innerHTML += `<option>${key}</option>`
         
     })
     thicknessSt()
+}
+
+// basınca gore Ductile çap getirme
+function pressureDc() {
+    Object.keys(ductileData).forEach(key => {
+        if (key === "C40") {
+            pressures.innerHTML += `<option value="${key}" selected>${key}</option>`
+        } else {
+            pressures.innerHTML += `<option value="${key}">${key}</option>`
+        }
+    })
+    
+    diameterDC()
+}
+
+// Ductile çap getirme
+function diameterDC() {
+    selectedPipeType = "Ductile"
+    pressure.removeEventListener("change", diameterPE)
+    pressure.addEventListener("change", diameterDC)     //pressure buttonlarına change eventi eklendi
+    diameter.removeEventListener("change", thicknessSt)
+    diameter.addEventListener("change", liningDc)
+    lining.parentElement.parentElement.classList.remove("hide");
+    thickness.parentElement.parentElement.classList.add("hide");
+    inner.parentElement.parentElement.classList.remove("hide");
+    diameterRowFree.classList.add("hide");
+    diameterRow.classList.remove("hide");
+    coefficient.parentElement.parentElement.classList.add("hide");
+    lining.disabled = true;
+    diameter.innerHTML = "";
+    ductileData[pressures.value].forEach(option => {
+        
+        diameter.innerHTML += `<option>${option.diameter}</option>`
+    })
+    lining.value = ductileData[pressures.value].find(item => item.diameter == diameter.value).lining;
+    }
+// default lining Ductile
+function liningDc() {
+    lining.value = ductileData[pressures.value].find(item => item.diameter == diameter.value).lining;
+}
+
+// Free Calculation
+function freeCalc() {
+    selectedPipeType = ""
+    lining.parentElement.parentElement.classList.remove("hide");
+    thickness.parentElement.parentElement.classList.remove("hide");
+    inner.parentElement.parentElement.classList.remove("hide");
+    diameterRowFree.classList.remove("hide");
+    diameterRow.classList.add("hide");
+    coefficient.parentElement.parentElement.classList.remove("hide");
+    lining.disabled = false;
+    lining.required = true;
 }
 
 
@@ -180,9 +266,60 @@ function innerDiameterCalculation() {
                 thicknessValue2 = parseFloat(lining.value)
                 innerDiameter = (steelData[diameter.value][0].outerDiameter - 2*(thicknessValue1 + thicknessValue2)).toFixed(2);
                 C = HazenWilliamsC.steel
+            } else if (selectedPipe === "ductile") {
+                outerDiameter = ductileData[pressures.value].find(item => item.diameter == diameter.value).outer;
+                thicknessValue1 = ductileData[pressures.value].find(item => item.diameter == diameter.value).thickness;
+                thicknessValue2 = parseFloat(lining.value);
+                innerDiameter = outerDiameter - 2*(thicknessValue1+thicknessValue2);
+                C = HazenWilliamsC.ductile;
+            } else if (selectedPipe === "free") {
+                outerDiameter = parseFloat(diameterfree.value);
+                thicknessValue1 = parseFloat(thickness.value);
+                thicknessValue2 = parseFloat(lining.value);
+                innerDiameter = outerDiameter - 2*(thicknessValue1+thicknessValue2);
+                C = coefficient.value; // DEĞİŞECEK
             }
             return innerDiameter, C
 }
+
+// inner diameter otomatik hesap
+diameter.addEventListener("change", innerDiameterShow)
+diameterfree.addEventListener("keyup", innerDiameterShow)
+lining.addEventListener("keyup", innerDiameterShow)
+thickness.addEventListener("keyup", innerDiameterShow)
+function innerDiameterShow() {
+    if (selectedPipeType === "") {
+        if (!isNaN(parseFloat(lining.value)) && !isNaN(parseFloat(diameterfree.value)) && !isNaN(parseFloat(thickness.value))) {
+            innerDiameterCalculation()
+            inner.value = innerDiameter
+        } else {
+            inner.value =""
+        }
+    } else if (selectedPipeType === "Ductile"){
+        innerDiameterCalculation()
+        inner.value = innerDiameter
+    } else if (selectedPipeType === "St,") {
+        if (!isNaN(parseFloat(lining.value))) {
+            innerDiameterCalculation()
+            inner.value = innerDiameter
+        } else {
+            inner.value =""
+        }
+    }
+
+    innerDiameterColor()
+    
+    
+}
+function innerDiameterColor() {
+    console.log(inner.value)
+    if (parseFloat(innerDiameter) < 0) {
+        inner.classList.add("danger");
+    } else {
+        inner.classList.remove("danger");
+    }
+}
+
 
 // A - J - JL Hesaplama
 let area;
@@ -191,13 +328,14 @@ let headloss;
 let localHeadloss;
 let totalHeadloss;
 let total;
+
 function headlossCalculation() {
     unitConversion()
     innerDiameterCalculation()
     area = ((innerDiameter/1000)**2 * Math.PI /4);
     velocity = (calculatedFlowrate / area).toFixed(2);
     headloss = ((10.7 * (calculatedFlowrate/C)**1.852 ) / (innerDiameter/1000)**4.87).toFixed(6)
-    headloss2 = ((10.583 * (calculatedFlowrate)**1.85 ) / (C**1.85 * (innerDiameter/1000)**4.87)).toFixed(6)
+    //headloss2 = ((10.583 * (calculatedFlowrate)**1.85 ) / (C**1.85 * (innerDiameter/1000)**4.87)).toFixed(6)
     totalHeadloss = (headloss * pipeLength.value).toFixed(2);
     if (localHead.value>0) {
         localHeadloss = (totalHeadloss * (localHead.value)/100).toFixed(2);
@@ -230,7 +368,7 @@ function resultsContainer() {
                 <div class="row">
                     <div class="col-2"> D </div>
                     <div class="col-1"> = </div>    
-                    <div class="col-8"> Ø${diameter.value}mm ${selectedPipeType} ${pressure.value} </div>  
+                    <div class="col-8"> Ø${diameter.value}${diameterfree.value}mm ${selectedPipeType} ${pressure.value} </div>  
                 </div>
                 <div class="row">
                     <div class="col-2"> V </div>
@@ -266,7 +404,7 @@ form.addEventListener("submit", e => {
     e.preventDefault();
     headlossCalculation()
     resultsContainer()
-    console.log(lining.value)
+
 })
 
 
