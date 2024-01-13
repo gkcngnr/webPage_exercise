@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Head Loss Calculator</title>
+</head>
+<body>
+
+    <div class="container pb-3">
+        <div class="text-center banner">
+            <h1>Head Loss Calculator</h1>
+            <h3>Gravity - Kutter</h3>
+            <div class="mt-5">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Pressurized</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../hazenwilliams/hazenwilliams.html">Hazen–Williams</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown"><a class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Gravity</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="kutter.html">Kutter</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Formulas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+       
+        
+        <form id="form" class="m-5 mb-2">
+            <div class="row mb-3">
+                <div class="btn-group" role="group" aria-label="Pipe Type">
+                    <input type="radio" class="btn-check" name="pipetype" id="concrete" autocomplete="off" checked value="">
+                    <label class="btn btn-outline-primary" for="concrete">Concrete</label>
+                  
+                    <input type="radio" class="btn-check" name="pipetype" id="HDPE" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="HDPE">HDPE</label>
+
+                </div>
+            </div>
+            <div class="row mb-1 mt-5">
+                <div class="col-2">
+                    
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label">Flow Rate (Q):</label>
+                </div>
+                <div class="col-3">
+                    <input id="flowrate" type="number" step="0.001" min="0" class="form-control" required>
+                </div>
+                <div class="col-2">
+                    <select id="flowUnit" class="form-select" aria-label="flow unit">
+                        <option value="lts">lt/s</option>
+                        <option value="m3s">m³/s</option>
+                        <option value="m3h">m³/h</option>
+                      </select>
+                </div>
+            </div>
+
+
+            <div class="row mb-1">
+                <div class="col-2">
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label">Diameter (DN):</label>
+                </div>
+                <div class="col-3">
+                    <input id="diameter" type="number" step="1" min="0" class="form-control" required>
+                </div>
+                <div class="col-2">
+                    <div  class="form-control"  >mm</div>
+                </div>
+            </div>
+
+
+
+
+            <div class="row mb-1">
+                <div class="col-2">
+                    
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label">Coefficient (m):</label>
+                </div>
+                <div class="col-3">
+                    <input id="coefficient" type="number" step="0.001" min="0" class="form-control" required>
+                </div>
+            </div>
+
+
+
+            <div class="row mb-5">
+                <div class="col-2">
+                    
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label">Slope (S):</label>
+                </div>
+                <div class="col-1" style="padding-right: 0;">
+                    <input value="1 /" class="form-control" disabled>
+                </div>
+                <div class="col-2" style="padding-left: 0;">
+                    <input id="slope" type="number" step="1" min="0" class="form-control" required>
+                </div>
+                <div class="col-2">
+                    <div  class="form-control"  >m/m</div>
+                </div>
+            </div>
+
+
+
+            <div class="row mb-3">
+                <div class="col-12 ">
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                </div>
+            </div>
+
+
+        </form>
+
+        <div class="result">
+
+        </div>
+
+
+    </div>
+
+    
+
+    <footer class="footer">
+        <p>©2024, NGG - All rights reserved.</p>
+    </footer>
+
+    
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="kutter.js"></script>
+</body>
+</html>

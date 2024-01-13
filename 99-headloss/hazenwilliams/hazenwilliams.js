@@ -100,7 +100,6 @@ function pipeTypeSelection(event) {
     clearInput()
     const selectedType = event.target;
     if (selectedType.id === "pe100") {
-        
         pressurePE()
 
     } else if (selectedType.id === "steel") {
@@ -133,11 +132,11 @@ function diameterPE() {
     pressure.removeEventListener("change", diameterDC)
     pressure.addEventListener("change", diameterPE)     //pressure buttonlarına change eventi eklendi
     diameter.removeEventListener("change", thicknessSt)
-    
     lining.parentElement.parentElement.classList.add("hide");
     thickness.parentElement.parentElement.classList.add("hide");
     inner.parentElement.parentElement.classList.add("hide");
     diameterRowFree.classList.add("hide");
+    diameterfree.required = false;
     diameterRow.classList.remove("hide");
     coefficient.parentElement.parentElement.classList.add("hide");
     lining.required = false;
@@ -169,6 +168,7 @@ function diameterSt() {
     thickness.parentElement.parentElement.classList.add("hide");
     inner.parentElement.parentElement.classList.remove("hide");
     diameterRowFree.classList.add("hide");
+    diameterfree.required = false;
     diameterRow.classList.remove("hide");
     coefficient.parentElement.parentElement.classList.add("hide");
     Object.keys(steelData).forEach(key => {
@@ -202,6 +202,7 @@ function diameterDC() {
     thickness.parentElement.parentElement.classList.add("hide");
     inner.parentElement.parentElement.classList.remove("hide");
     diameterRowFree.classList.add("hide");
+    diameterfree.required = false;
     diameterRow.classList.remove("hide");
     coefficient.parentElement.parentElement.classList.add("hide");
     lining.disabled = true;
@@ -224,6 +225,7 @@ function freeCalc() {
     thickness.parentElement.parentElement.classList.remove("hide");
     inner.parentElement.parentElement.classList.remove("hide");
     diameterRowFree.classList.remove("hide");
+    diameterfree.required = true;
     diameterRow.classList.add("hide");
     coefficient.parentElement.parentElement.classList.remove("hide");
     lining.disabled = false;
@@ -312,7 +314,6 @@ function innerDiameterShow() {
     
 }
 function innerDiameterColor() {
-    console.log(inner.value)
     if (parseFloat(innerDiameter) < 0) {
         inner.classList.add("danger");
     } else {
@@ -334,8 +335,8 @@ function headlossCalculation() {
     innerDiameterCalculation()
     area = ((innerDiameter/1000)**2 * Math.PI /4);
     velocity = (calculatedFlowrate / area).toFixed(2);
-    headloss = ((10.7 * (calculatedFlowrate/C)**1.852 ) / (innerDiameter/1000)**4.87).toFixed(6)
-    //headloss2 = ((10.583 * (calculatedFlowrate)**1.85 ) / (C**1.85 * (innerDiameter/1000)**4.87)).toFixed(6)
+    //headloss = ((10.7 * (calculatedFlowrate/C)**1.852 ) / (innerDiameter/1000)**4.87).toFixed(6)
+    headloss = ((10.583 * (calculatedFlowrate)**1.85 ) / (C**1.85 * (innerDiameter/1000)**4.87)).toFixed(6)
     totalHeadloss = (headloss * pipeLength.value).toFixed(2);
     if (localHead.value>0) {
         localHeadloss = (totalHeadloss * (localHead.value)/100).toFixed(2);
