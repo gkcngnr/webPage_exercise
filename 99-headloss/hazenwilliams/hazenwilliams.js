@@ -14,7 +14,7 @@ const diameterRow = document.getElementById("diameterRow")
 const diameterRowFree = document.getElementById("diameterRowFree")
 const diameterfree = document.getElementById("diameterfree")
 const coefficient = document.getElementById("coefficient")
-
+const submitButton = document.querySelector('button[type="submit"]');
 
 
 const HazenWilliamsC = {
@@ -86,6 +86,8 @@ function clearInput() {
     inner.value=""
     thickness.value=""
     coefficient.value=""
+    submitButton.disabled = false;
+    
 }
 
 //pipe type radio buttonlarına change eventi eklendi
@@ -279,9 +281,15 @@ function innerDiameterCalculation() {
                 thicknessValue1 = parseFloat(thickness.value);
                 thicknessValue2 = parseFloat(lining.value);
                 innerDiameter = outerDiameter - 2*(thicknessValue1+thicknessValue2);
-                C = coefficient.value; // DEĞİŞECEK
+                C = coefficient.value; 
             }
+        if (innerDiameter < 0) {
+            submitButton.disabled = true;
+            
+        } else {
+            submitButton.disabled = false;
             return innerDiameter, C
+        }
 }
 
 // inner diameter otomatik hesap

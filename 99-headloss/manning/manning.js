@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-const kutterM = {
-    "concrete" : 0.200,
-    "HDPE" : 0.110
+const manningN = {
+    "concrete" : 0.014,
+    "HDPE" : 0.009
 }
 
 
@@ -42,10 +42,10 @@ function pipeTypeSelection(event) {
     const selectedType = event.target;
     if (selectedType.id === "concrete") {
         selectedPipeType = "Concrete"
-        coefficient.value = kutterM.concrete.toFixed(3);
+        coefficient.value = manningN.concrete.toFixed(3);
         
     } else if (selectedType.id === "HDPE") {
-        coefficient.value = kutterM.HDPE.toFixed(3);
+        coefficient.value = manningN.HDPE.toFixed(3);
         selectedPipeType = "HDPE"
     } 
 }
@@ -74,76 +74,75 @@ function unitConversion()  {
 let velocity ="";
 let fullness="";
 let waterLvl="";
-// function fullnessCalc() {
-//     unitConversion()
-//     const pipeDN = parseInt(diameter.value);
-//     const pipeSlope = slope.value;
-//     const kutterCoef = parseFloat(coefficient.value);
-//     const tolerance = 0.1;
 
-//     for(let i=0.1; i<=pipeDN; i += 0.1) {
-//         fullness = i / pipeDN * 100;
-//         const wettedPerimeterAngle = Math.acos(1 - 2*fullness/100)*360/Math.PI;
-//         const wettedArea = (pipeDN/1000)**2 / 4*(Math.PI*wettedPerimeterAngle/360-0.5*Math.sin(wettedPerimeterAngle*Math.PI/180));
-//         const wettedPerimeter = Math.PI*pipeDN/1000*wettedPerimeterAngle/360;
-//         const hydraulicRadius = wettedArea / wettedPerimeter;
-//         velocity = 100*Math.sqrt(hydraulicRadius)*Math.sqrt(1/pipeSlope*hydraulicRadius)/(kutterCoef+Math.sqrt(hydraulicRadius));
-//         const iteratedFlowrate = (wettedArea * velocity * 1000).toFixed(3);
+// doluluk değerleri indeks/100 olacak şekilde K arrayi
+const manningTable = [0, 0.000047, 0.00021, 0.0005, 0.00093, 0.0015, 0.00221, 0.00306, 0.00407, 0.00521,
+                      0.00651, 0.00795, 0.00953, 0.0113, 0.0131, 0.0152, 0.0173, 0.0196, 0.0220, 0.0246,
+                      0.0273, 0.0301, 0.0331, 0.0362, 0.0394, 0.0427, 0.0461, 0.0497, 0.0534, 0.0572,
+                      0.0610, 0.065, 0.0691, 0.0733, 0.0776, 0.082, 0.0864, 0.0910, 0.0956, 0.1003,
+                      0.105, 0.1099, 0.1148, 0.1197, 0.1248, 0.1298, 0.1349, 0.1401, 0.1453, 0.1506,
+                      0.156, 0.161, 0.166, 0.172, 0.177, 0.183, 0.188, 0.193, 0.199, 0.204,
+                      0.209, 0.215, 0.22, 0.225, 0.231, 0.236, 0.241, 0.246, 0.251, 0.256,
+                      0.261, 0.266, 0.271, 0.275, 0.280, 0.284, 0.289, 0.293, 0.297, 0.301,
+                      0.305, 0.308, 0.312, 0.315, 0.318, 0.321, 0.324, 0.326, 0.329, 0.331,
+                      0.332, 0.334, 0.335, 0.335, 0.335, 0.335, 0.334, 0.332, 0.329, 0.325,
+                      0.312
+                    ]
 
-//         if (iteratedFlowrate === calculatedFlowrate) {
-//             resultsContainer()
-//             break;
-        
-//         } else if (Math.abs(iteratedFlowrate - calculatedFlowrate) < tolerance) {
-//             resultsContainer()
-//             break;
-//         } else if (i === pipeDN) {
-//             alert("This diameter is insufficient for this flow rate");
-//             break;
-//         } 
-//     }
-// }
+function velocityCalc(fullness, pipeDN) {
+    const wettedPerimeterAngle = Math.acos(1 - 2*fullness/100)*360/Math.PI;
+    const wettedArea = (pipeDN/1000)**2 / 4*(Math.PI*wettedPerimeterAngle/360-0.5*Math.sin(wettedPerimeterAngle*Math.PI/180));
+    velocity = calculatedFlowrate/1000 / wettedArea;
+}                    
 
 function fullnessCalc() {
     unitConversion()
-    const pipeDN = parseInt(diameter.value);
-    const pipeSlope = slope.value;
-    const kutterCoef = parseFloat(coefficient.value);
-    const tolerance = 0.1
-    let iterationResults = {}
+    const epsilon = 0.00015;
 
-    for(let i=0.01; i<=pipeDN; i += 0.01) {
-        fullness = i / pipeDN * 100;
-        const wettedPerimeterAngle = Math.acos(1 - 2*fullness/100)*360/Math.PI;
-        const wettedArea = (pipeDN/1000)**2 / 4*(Math.PI*wettedPerimeterAngle/360-0.5*Math.sin(wettedPerimeterAngle*Math.PI/180));
-        const wettedPerimeter = Math.PI*pipeDN/1000*wettedPerimeterAngle/360;
-        const hydraulicRadius = wettedArea / wettedPerimeter;
-        velocity = 100*Math.sqrt(hydraulicRadius)*Math.sqrt(1/pipeSlope*hydraulicRadius)/(kutterCoef+Math.sqrt(hydraulicRadius));
-        const iteratedFlowrate = (wettedArea * velocity * 1000).toFixed(3);
-        const difference = Math.abs(parseFloat(iteratedFlowrate) - parseFloat(calculatedFlowrate));
-        if (difference < tolerance) {
-            iterationResults[difference.toFixed(5)] = {
-                "waterLvl" : i,
-                "velocity" : velocity,
-                "fullness" : fullness
-            };
+    const pipeDN = parseInt(diameter.value);
+    const pipeSlope = 1/slope.value;
+    const manningCoef = parseFloat(coefficient.value);
+
+    const calculatedK =  ( calculatedFlowrate/1000 * manningCoef ) / ((pipeDN/1000) ** (8/3) * (pipeSlope ** 0.5))
+    console.log(calculatedK)
+    for (let i=0; i<manningTable.length; i++) {
+        const diff = Math.abs(calculatedK - manningTable[i]);
+        
+        if (diff < epsilon) {
+            console.log(diff)
+            fullness = i;
+            waterLvl = i*pipeDN/100;
+            velocityCalc(fullness, pipeDN);
+            resultsContainer()
+            break;
+
+        } else if (calculatedK > manningTable[i] && calculatedK < manningTable[i+1]) {
+            const dif = manningTable[i+1] - manningTable[i];
+            const requested = calculatedK - manningTable[i];
+            const enterpolation = (requested / dif);
+            fullness =  i + enterpolation;
+            waterLvl = i*pipeDN/100;
+
+            velocityCalc(fullness, pipeDN)
+            resultsContainer()
+            break;
+
+        } else if (calculatedK < manningTable[i] && calculatedK > manningTable[i+1]) {
+            const dif = manningTable[i] - manningTable[i+1];
+            const requested = calculatedK - manningTable[i+1];
+            const enterpolation = (requested / dif);
+            fullness =  i+1 + enterpolation;
+            waterLvl = i*pipeDN/100;
+
+            velocityCalc(fullness, pipeDN)
+            resultsContainer()
+            break;
+        } else if (i == manningTable.length -1){
+            alert("This diameter is insufficient for this flow rate!");
+            break;
         }
     }
-    
-    if (Object.keys(iterationResults).length === 0) {
-        alert("This diameter is insufficient for this flow rate!")
-    } else {
-        let keys = Object.keys(iterationResults);
-        keys.sort((a,b) => parseFloat(a) - parseFloat(b));
 
-        console.log(iterationResults)
-        const minResult = iterationResults[keys[0]]
-
-        velocity = minResult.velocity;
-        fullness = minResult.fullness;
-        waterLvl = minResult.waterLvl;
-        resultsContainer()
-    }
 }
 
 //sonuçları yazdırma
