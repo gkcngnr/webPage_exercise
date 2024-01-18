@@ -74,35 +74,6 @@ function unitConversion()  {
 let velocity ="";
 let fullness="";
 let waterLvl="";
-// function fullnessCalc() {
-//     unitConversion()
-//     const pipeDN = parseInt(diameter.value);
-//     const pipeSlope = slope.value;
-//     const kutterCoef = parseFloat(coefficient.value);
-//     const tolerance = 0.1;
-
-//     for(let i=0.1; i<=pipeDN; i += 0.1) {
-//         fullness = i / pipeDN * 100;
-//         const wettedPerimeterAngle = Math.acos(1 - 2*fullness/100)*360/Math.PI;
-//         const wettedArea = (pipeDN/1000)**2 / 4*(Math.PI*wettedPerimeterAngle/360-0.5*Math.sin(wettedPerimeterAngle*Math.PI/180));
-//         const wettedPerimeter = Math.PI*pipeDN/1000*wettedPerimeterAngle/360;
-//         const hydraulicRadius = wettedArea / wettedPerimeter;
-//         velocity = 100*Math.sqrt(hydraulicRadius)*Math.sqrt(1/pipeSlope*hydraulicRadius)/(kutterCoef+Math.sqrt(hydraulicRadius));
-//         const iteratedFlowrate = (wettedArea * velocity * 1000).toFixed(3);
-
-//         if (iteratedFlowrate === calculatedFlowrate) {
-//             resultsContainer()
-//             break;
-        
-//         } else if (Math.abs(iteratedFlowrate - calculatedFlowrate) < tolerance) {
-//             resultsContainer()
-//             break;
-//         } else if (i === pipeDN) {
-//             alert("This diameter is insufficient for this flow rate");
-//             break;
-//         } 
-//     }
-// }
 
 function fullnessCalc() {
     unitConversion()

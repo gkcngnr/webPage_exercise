@@ -26,7 +26,7 @@ const HazenWilliamsC = {
 //PE100 JSON dosyasından çekiliyor.
 // açılışta json yükleme ve PE100  çapları getirme
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('../data/PE100.json')
+    fetch('../../data/PE100.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });    
 
 //STEEL JSON dosyasndan çekiliyor.
-fetch('../data/STEEL.json')
+fetch('../../data/STEEL.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -59,7 +59,7 @@ fetch('../data/STEEL.json')
         });
 
 //DUCTILE JSON dosyasından çekiliyor
-fetch('../data/DUCTILE.json')
+fetch('../../data/DUCTILE.json')
         .then(response => {
             if(!response.ok) {
                 throw new Error('Network response was not ok');
