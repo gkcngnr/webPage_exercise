@@ -357,8 +357,15 @@ function headlossCalculation() {
 //sonuçları yazdırma
 let resultCount = 0;
 function resultsContainer() {
+    let resultContCount;
+    if (window.innerWidth < 700) {
+        resultContCount = 1
+    } else {
+        resultContCount = 3
+    }
     resultCount++
-    if (results.children.length >= 3) {
+
+    if (results.children.length >= resultContCount) {
         results.removeChild(results.firstElementChild);
         
     }

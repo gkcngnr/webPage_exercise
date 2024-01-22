@@ -31,48 +31,12 @@
                 </ul>
             </div>
         </div>
-
-        <div class="py-5 text-center pb-0">
-            <h3 style="margin:auto ">Contact Me</h3>
-            <p class="mb-4" style="margin:auto;">Feel free to report bugs or make suggestions. Thank You. ☺</p>
+       
             
+        <div class="col-6 mx-auto m-5 text-center">
+            <h3>Thank You For Contacting Us..</h3>
+            <p>We will get back to you soon..</p>
         </div>
-        
-        
-        <form id="form" class="m-5 mb-2" action="mail.php" method="post" >
-            
-            <div class="col-8 mx-auto">
-                <label class="form-contact mb-4" >
-                    <input class="form-input" type="text" name="name" required>
-                    <span>Name</span>
-                    <span class="border"></span>
-                </label>
-
-                <label class="form-contact mb-3" >
-                    <input class="form-input" type="email" name="email" required>
-                    <span>E-mail</span>
-                    <span class="border"></span>
-                </label>
-
-                <label class="form-contact mb-3" >
-                    <input class="form-input" type="text" name="subject" required>
-                    <span>Subject</span>
-                    <span class="border"></span>
-                </label>
-
-                <label class="form-contact mb-5" >
-                    <textarea class="form-input" type="text" name="message" required></textarea>
-                    <span>Your Message</span>
-                    <span class="border"></span>
-                </label>                
-            
-                <div>
-                    <button type="submit" class="btn btn-primary px-4">Send</button>
-                </div>
-            </div>
-
-
-        </form>
 
 
     </div>
@@ -86,9 +50,11 @@
         </div>
         
     </footer>
-
     
-    <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="contact.js"></script>
+    <script>
+        setTimeout(function(){
+            window.location.href = "../../index.html"; 
+        }, 3000); 
+    </script>
 </body>
 </html>

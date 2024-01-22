@@ -4,6 +4,7 @@ body {
 
 }
 
+
 .container {
     background: rgb(231, 206, 174); /* rgb(237, 187, 121); */
     opacity: 0.9;
@@ -28,7 +29,6 @@ body {
 
 .footer {
     background: rgb(148, 201, 202); 
-    height: 48px;
     text-align: center;
     padding-top: 12px;
     font-weight: bold;
@@ -163,7 +163,7 @@ body {
 
 .form-input:focus + span, .form-input:valid + span {
     color: black;
-    transform: translateX(-120px) scale(1); 
+    transform: translateX(-110px) scale(1); 
     /* transform: translateY(-22px) scale(0.8);   */
 }
 
@@ -174,3 +174,40 @@ body {
 .form-contact textarea {
     min-height: 75px;
 }
+
+
+/* ------------ */
+
+#bigScreen {
+    padding-right: 150px;
+}
+ @media only screen and (max-width:700px) {
+    #bigScreen {
+        padding-right: 30px;
+    }
+    #bigScreen div {
+        
+        padding:  0;
+        
+    }
+
+    #bigScreen div select {
+        font-size: 0.8rem;
+        padding:  8.5px 10px;
+    }
+
+    #bigScreen div .unit {
+        font-size: 0.8rem;
+        padding:  8.5px 10px;
+    }
+
+    .form-input:focus + span, .form-input:valid + span {
+        color: black;
+        
+        transform: translateY(-22px) scale(0.8);   
+    }
+
+    .card {
+        font-size: 0.8rem;
+    }
+} 

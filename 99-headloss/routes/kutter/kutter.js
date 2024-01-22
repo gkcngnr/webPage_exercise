@@ -1,14 +1,14 @@
-const pipeTypes = document.querySelectorAll('input[name="pipetype"]');
-const flowrate = document.getElementById("flowrate");
-const flowUnit = document.getElementById("flowUnit");
-const diameter = document.getElementById("diameter");
-const coefficient = document.getElementById("coefficient");
-const slope = document.getElementById("slope");
-const results = document.querySelector(".result");
+const kpipeTypes = document.querySelectorAll('input[name="pipetype"]');
+const Kflowrate = document.getElementById("flowrate");
+const KflowUnit = document.getElementById("flowUnit");
+const Kdiameter = document.getElementById("diameter");
+const Kcoefficient = document.getElementById("coefficient");
+const Kslope = document.getElementById("slope");
+const Kresults = document.querySelector(".result");
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    pipeTypes.forEach(pipeType => {
+    kpipeTypes.forEach(pipeType => {
         if (pipeType.checked) {
             pipeTypeSelection({ target: pipeType });
         }
@@ -23,14 +23,14 @@ const kutterM = {
 
 //inputları temizleme
 function clearInput() {
-    flowrate.value="";
-    diameter.value="";
-    slope.value="";
+    Kflowrate.value="";
+    Kdiameter.value="";
+    Kslope.value="";
 
 }
 
 //pipe type radio buttonlarına change eventi eklendi
-for (const pipeType of pipeTypes ) {
+for (const pipeType of kpipeTypes ) {
     pipeType.addEventListener("change", pipeTypeSelection)
 }
 
@@ -42,27 +42,27 @@ function pipeTypeSelection(event) {
     const selectedType = event.target;
     if (selectedType.id === "concrete") {
         selectedPipeType = "Concrete"
-        coefficient.value = kutterM.concrete.toFixed(3);
+        Kcoefficient.value = kutterM.concrete.toFixed(3);
         
     } else if (selectedType.id === "HDPE") {
-        coefficient.value = kutterM.HDPE.toFixed(3);
+        Kcoefficient.value = kutterM.HDPE.toFixed(3);
         selectedPipeType = "HDPE"
     } 
 }
 
 
 // debi değeri birim değiştirme
-flowUnit.addEventListener("change", unitConversion);
+KflowUnit.addEventListener("change", unitConversion);
 
 let showedFlowUnit = ""
-let calculatedFlowrate = flowrate.value;
+let calculatedFlowrate = Kflowrate.value;
 
 function unitConversion()  {
-    calculatedFlowrate = flowrate.value;
-    if (flowUnit.value === "m3s") {
+    calculatedFlowrate = Kflowrate.value;
+    if (KflowUnit.value === "m3s") {
         showedFlowUnit = "m³/s"
         calculatedFlowrate = (calculatedFlowrate*1000).toFixed(3);
-    } else if (flowUnit.value === "m3h") {
+    } else if (KflowUnit.value === "m3h") {
         calculatedFlowrate = (calculatedFlowrate/3.6).toFixed(3);
         showedFlowUnit = "m³/h"
     } else {
@@ -77,9 +77,9 @@ let waterLvl="";
 
 function fullnessCalc() {
     unitConversion()
-    const pipeDN = parseInt(diameter.value);
-    const pipeSlope = slope.value;
-    const kutterCoef = parseFloat(coefficient.value);
+    const pipeDN = parseInt(Kdiameter.value);
+    const pipeSlope = Kslope.value;
+    const kutterCoef = parseFloat(Kcoefficient.value);
     const tolerance = 0.1
     let iterationResults = {}
 
@@ -120,9 +120,15 @@ function fullnessCalc() {
 //sonuçları yazdırma
 let resultCount = 0;
 function resultsContainer() {
+    let resultContCount;
+    if (window.innerWidth < 700) {
+        resultContCount = 2
+    } else {
+        resultContCount = 3
+    }
     resultCount++
-    if (results.children.length >= 3) {
-        results.removeChild(results.firstElementChild);
+    if (Kresults.children.length >= resultContCount) {
+        Kresults.removeChild(Kresults.firstElementChild);
         
     }
     document.querySelector(".result").innerHTML += `
@@ -135,12 +141,12 @@ function resultsContainer() {
                 <div class="row">
                     <div class="col-3"> Q </div>
                     <div class="col-1"> = </div>    
-                    <div class="col-7"> ${parseFloat(flowrate.value).toFixed(2)} ${showedFlowUnit} </div>  
+                    <div class="col-7"> ${parseFloat(Kflowrate.value).toFixed(2)} ${showedFlowUnit} </div>  
                 </div>
                 <div class="row">
                     <div class="col-3"> D </div>
                     <div class="col-1"> = </div>    
-                    <div class="col-7"> Ø${diameter.value}mm ${selectedPipeType} </div>  
+                    <div class="col-7"> Ø${Kdiameter.value}mm ${selectedPipeType} </div>  
                 </div>
                 <div class="row">
                     <div class="col-3"> V </div>
@@ -150,7 +156,7 @@ function resultsContainer() {
                 <div class="row">
                     <div class="col-3"> S </div>
                     <div class="col-1"> = </div>    
-                    <div class="col-7"> 1/${slope.value} m/m </div>  
+                    <div class="col-7"> 1/${Kslope.value} m/m </div>  
                 </div>
                 <div class="row">
                     <div class="col-3"> h </div>
