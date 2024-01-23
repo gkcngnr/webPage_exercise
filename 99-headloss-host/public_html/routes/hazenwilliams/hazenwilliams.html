@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate head loss in a pressurized pipe using the Hazen–Williams Formula with our Head Loss Calculator.
+    Enter flow rate, choose diameter and maximum inner pressure, input local head loss percentage and length for accurate results.
+    Customize values for outer diameter, inner diameter, thickness, and lining. Optimize fluid flow calculations for your specific scenarios.">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <title>Head Loss Calculator - Pressurized Flow - Hazen-Williams Formula</title>
+</head>
+<body>
+
+    <div class="container pb-3">
+        <div class="text-center banner">
+            <h1>Head Loss Calculator</h1>
+            <p style="font-size: 1.75rem; font-weight: 500">Pressurized - Hazen–Williams</p>
+            <div class="mt-5">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link" href="/homePage">Home</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Pressurized</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/pressurized/hazenwilliams">Hazen–Williams</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Gravity</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/gravity/kutter">Kutter</a></li>
+                            <li><a class="dropdown-item" href="/gravity/manning">Manning</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/contactMe">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+       
+        
+        <form id="form" class="m-5 mb-2">
+            <div class="row mb-3">
+                <div class="btn-group" role="group" aria-label="Pipe Type">
+                    <input type="radio" class="btn-check" name="pipetype" id="pe100" autocomplete="off" checked >
+                    <label class="btn btn-outline-primary" for="pe100">PE100</label>
+                  
+                    <input type="radio" class="btn-check" name="pipetype" id="steel" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="steel">Steel</label>
+                  
+                    <input type="radio" class="btn-check" name="pipetype" id="ductile" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="ductile">Ductile</label>
+
+                    <input type="radio" class="btn-check" name="pipetype" id="free" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="free">Free</label>
+                </div>
+            </div>
+
+
+            <div id="bigScreen">
+                <div class="row mb-1 mt-5">
+                    <div class="col-5 text-end">
+                        <label class="col-form-label">Flow Rate (Q):</label>
+                    </div>
+                    <div class="col-4">
+                        <input id="flowrate" type="number" step="0.0001" min="0" class="form-control" required>
+                    </div>
+                    <div class="col-3">
+                        <select id="flowUnit" class="form-select" aria-label="flow unit">
+                            <option value="lts">lt/s</option>
+                            <option value="m3s">m³/s</option>
+                            <option value="m3h">m³/h</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-1" id="diameterRow">
+                    <div class="col-5 text-end">
+                        <label class="col-form-label">Diameter (DN):</label>
+                    </div>
+                    <div class="col-4">
+                        <select id="diameter" class="form-select" aria-label="diameter">
+                            
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <select id="pressure" class="form-select unit" aria-label="pressure">
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-1 hide" id="diameterRowFree">
+                    <div class="col-5 text-end">
+                        <label class="col-form-label">Diameter (DN):</label>
+                    </div>
+                    <div class="col-4">
+                        <input id="diameterfree" type="number" step="1" min="0" class="form-control">
+                    </div>
+                    <div class="col-3">
+                        <div  class="form-control unit"  >mm</div>
+                    </div>
+                </div>
+
+                <div class="row mb-1 hide">
+                    <div class="col-5 text-end">
+                        <label class="col-form-label">Thickness (e):</label>
+                    </div>
+                    <div class="col-4">
+                        <input id="thickness" type="number" step="0.1" min="0" class="form-control">
+                    </div>
+                    <div class="col-3">
+                        <div  class="form-control unit"  >mm</div>
+                    </div>
+                </div>
+
+                <div class="row mb-1 hide">
+                    <div class="col-5 text-end">
+                        <label class="col-form-label">Inner Lining:</label>
+                    </div>
+                    <div class="col-4">
+                        <input id="lining" type="number" step="0.1" min="0" class="form-control">
+                    </div>
+                    <div class="col-3">
+                        <div  class="form-control unit"  >mm</div>
+
+                    </div>
+                </div>
+
+                <div class="row mb-1 hide">
+                    <div class="col-5 text-end">
+                        <label class="col-form-label">Inner Diameter:</label>
+                    </div>
+                    <div class="col-4">
+                        <input id="innerDiameter" type="number" step="0.01" min="0" class="form-control" disabled>
+                    </div>
+                    <div class="col-3">
+                        <div  class="form-control unit"  >mm</div>
+
+                    </div>
+                </div>
+
+                <div class="row mb-1 hide">
+                    <div class="col-5 text-end">
+                        <label class="col-form-label">Coefficient (C):</label>
+                    </div>
+                    <div class="col-4">
+                        <input id="coefficient" type="number" step="1" min="0" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mb-1">
+                    <div class="col-5 text-end">
+                        <label class="col-form-label">Local Head Loss (%):</label>
+                    </div>
+                    <div class="col-4">
+                        <input id="localHead" type="number" step="1" min="0" class="form-control">
+                    </div>
+                    <div class="col-3">
+                        <div  class="form-control unit"  >%</div>
+                    </div>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-5 text-end">
+                        <label class="col-form-label">Length (L):</label>
+                    </div>
+                    <div class="col-4">
+                        <input id="pipeLength" type="number" step="0.01" min="0" class="form-control" required>
+                    </div>
+                    <div class="col-3">
+                        <div  class="form-control unit"  >m</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col-12 ">
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                </div>
+            </div>
+
+
+        </form>
+
+        <div class="result">
+
+        </div>
+
+    </div>
+
+    <footer >
+        <div class="footer p-2">
+            <p class="m-0">©2024, NGG - All rights reserved.</p>
+            <a href="mailto:n.gokcenguner@gmail.com" class="m-0">n.gokcenguner@gmail.com</a>
+        </div>
+        
+    </footer>
+
+    <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/routes/hazenwilliams/hazenwilliams.js"></script>
+</body>
+</html>

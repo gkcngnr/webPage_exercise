@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <title>Contact</title>
+</head>
+<body>
+
+    <div class="container pb-3">
+        <div class="text-center banner">
+            <h1>Pipe Flow Calculator</h1>
+            <p style="font-size: 1.75rem; font-weight: 500">Contact Me</p>
+            <div class="mt-5">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link" href="/homePage">Home</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Pressurized</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/pressurized/hazenwilliams">Hazen–Williams</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Gravity</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/gravity/kutter">Kutter</a></li>
+                            <li><a class="dropdown-item" href="/gravity/manning">Manning</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="/contactMe">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="py-5 text-center pb-0">
+            <h3 style="margin:auto ">Contact Me</h3>
+            <p class="mb-4" style="margin:auto;">Feel free to report bugs or make suggestions. Thank You. ☺</p>
+            
+        </div>
+        
+        
+        <form id="form" class="m-5 mb-2" action="mail.php" method="post" >
+            
+            <div class="col-8 mx-auto">
+                <label class="form-contact mb-4" >
+                    <input class="form-input" type="text" name="name" required>
+                    <span>Name</span>
+                    <span class="border"></span>
+                </label>
+
+                <label class="form-contact mb-3" >
+                    <input class="form-input" type="email" name="email" required>
+                    <span>E-mail</span>
+                    <span class="border"></span>
+                </label>
+
+                <label class="form-contact mb-3" >
+                    <input class="form-input" type="text" name="subject" required>
+                    <span>Subject</span>
+                    <span class="border"></span>
+                </label>
+
+                <label class="form-contact mb-5" >
+                    <textarea class="form-input" type="text" name="message" required></textarea>
+                    <span>Your Message</span>
+                    <span class="border"></span>
+                </label>                
+            
+                <div>
+                    <button type="submit" name="send" class="btn btn-primary px-4" >Send</button>
+                </div>
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+    
+
+    <footer >
+        <div class="footer p-2">
+            <p class="m-0">©2024, NGG - All rights reserved.</p>
+            <a href="mailto:n.gokcenguner@gmail.com" class="m-0">n.gokcenguner@gmail.com</a>
+        </div>
+        
+    </footer>
+
+    
+    <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

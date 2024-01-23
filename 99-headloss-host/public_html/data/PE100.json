@@ -1,0 +1,732 @@
+﻿{    
+    "PN6": [
+    {
+        "diameter": 50,
+        "inner": 46
+    },
+    {
+        "diameter": 63,
+        "inner": 58
+    },
+    {
+        "diameter": 75,
+        "inner": 69.2
+    },
+    {
+        "diameter": 90,
+        "inner": 83
+    },
+    {
+        "diameter": 110,
+        "inner": 101.6
+    },
+    {
+        "diameter": 125,
+        "inner": 115.4
+    },
+    {
+        "diameter": 140,
+        "inner": 129.2
+    },
+    {
+        "diameter": 160,
+        "inner": 147.6
+    },
+    {
+        "diameter": 180,
+        "inner": 166.2
+    },
+    {
+        "diameter": 200,
+        "inner": 184.6
+    },
+    {
+        "diameter": 225,
+        "inner": 207.8
+    },
+    {
+        "diameter": 250,
+        "inner": 230.8
+    },
+    {
+        "diameter": 280,
+        "inner": 258.6
+    },
+    {
+        "diameter": 315,
+        "inner": 290.8
+    },
+    {
+        "diameter": 355,
+        "inner": 327.8
+    },
+    {
+        "diameter": 400,
+        "inner": 369.4
+    },
+    {
+        "diameter": 450,
+        "inner": 415.6
+    },
+    {
+        "diameter": 500,
+        "inner": 461.8
+    },
+    {
+        "diameter": 560,
+        "inner": 517.2
+    },
+    {
+        "diameter": 630,
+        "inner": 581.8
+    },
+    {
+        "diameter": 710,
+        "inner": 655.6
+    },
+    {
+        "diameter": 800,
+        "inner": 738.8
+    },
+    {
+        "diameter": 900,
+        "inner": 831.2
+    },
+    {
+        "diameter": 1000,
+        "inner": 923.6
+    }
+],
+"PN8": [
+    {
+        "diameter": 40,
+        "inner": 36
+    },
+    {
+        "diameter": 50,
+        "inner": 45.2
+    },
+    {
+        "diameter": 63,
+        "inner": 57
+    },
+    {
+        "diameter": 75,
+        "inner": 67.8
+    },
+    {
+        "diameter": 90,
+        "inner": 81.4
+    },
+    {
+        "diameter": 110,
+        "inner": 99.4
+    },
+    {
+        "diameter": 125,
+        "inner": 113
+    },
+    {
+        "diameter": 140,
+        "inner": 126.6
+    },
+    {
+        "diameter": 160,
+        "inner": 144.6
+    },
+    {
+        "diameter": 180,
+        "inner": 162.8
+    },
+    {
+        "diameter": 200,
+        "inner": 180.8
+    },
+    {
+        "diameter": 225,
+        "inner": 203.4
+    },
+    {
+        "diameter": 250,
+        "inner": 226.2
+    },
+    {
+        "diameter": 280,
+        "inner": 253.2
+    },
+    {
+        "diameter": 315,
+        "inner": 285
+    },
+    {
+        "diameter": 355,
+        "inner": 321.2
+    },
+    {
+        "diameter": 400,
+        "inner": 361.8
+    },
+    {
+        "diameter": 450,
+        "inner": 407
+    },
+    {
+        "diameter": 500,
+        "inner": 452.2
+    },
+    {
+        "diameter": 560,
+        "inner": 506.6
+    },
+    {
+        "diameter": 630,
+        "inner": 570
+    },
+    {
+        "diameter": 710,
+        "inner": 642.2
+    },
+    {
+        "diameter": 800,
+        "inner": 723.8
+    },
+    {
+        "diameter": 900,
+        "inner": 814.2
+    },
+    {
+        "diameter": 1000,
+        "inner": 904.6
+    }
+],
+"PN10": [
+    {
+        "diameter": 32,
+        "inner": 28
+    },
+    {
+        "diameter": 40,
+        "inner": 35.2
+    },
+    {
+        "diameter": 50,
+        "inner": 44
+    },
+    {
+        "diameter": 63,
+        "inner": 55.4
+    },
+    {
+        "diameter": 75,
+        "inner": 66
+    },
+    {
+        "diameter": 90,
+        "inner": 79.2
+    },
+    {
+        "diameter": 110,
+        "inner": 96.8
+    },
+    {
+        "diameter": 125,
+        "inner": 110.2
+    },
+    {
+        "diameter": 140,
+        "inner": 123.4
+    },
+    {
+        "diameter": 160,
+        "inner": 141
+    },
+    {
+        "diameter": 180,
+        "inner": 158.6
+    },
+    {
+        "diameter": 200,
+        "inner": 176.2
+    },
+    {
+        "diameter": 225,
+        "inner": 198.2
+    },
+    {
+        "diameter": 250,
+        "inner": 220.4
+    },
+    {
+        "diameter": 280,
+        "inner": 246.8
+    },
+    {
+        "diameter": 315,
+        "inner": 277.6
+    },
+    {
+        "diameter": 355,
+        "inner": 312.8
+    },
+    {
+        "diameter": 400,
+        "inner": 352.6
+    },
+    {
+        "diameter": 450,
+        "inner": 396.6
+    },
+    {
+        "diameter": 500,
+        "inner": 440.6
+    },
+    {
+        "diameter": 560,
+        "inner": 493.6
+    },
+    {
+        "diameter": 630,
+        "inner": 555.2
+    },
+    {
+        "diameter": 710,
+        "inner": 625.8
+    },
+    {
+        "diameter": 800,
+        "inner": 705.2
+    },
+    {
+        "diameter": 900,
+        "inner": 793.4
+    },
+    {
+        "diameter": 1000,
+        "inner": 881.4
+    }
+],
+
+"PN12.5": [
+    {
+        "diameter": 25,
+        "inner": 21
+    },
+    {
+        "diameter": 32,
+        "inner": 27.2
+    },
+    {
+        "diameter": 40,
+        "inner": 34
+    },
+    {
+        "diameter": 50,
+        "inner": 42.6
+    },
+    {
+        "diameter": 63,
+        "inner": 53.6
+    },
+    {
+        "diameter": 75,
+        "inner": 63.8
+    },
+    {
+        "diameter": 90,
+        "inner": 76.6
+    },
+    {
+        "diameter": 110,
+        "inner": 93.8
+    },
+    {
+        "diameter": 125,
+        "inner": 106.6
+    },
+    {
+        "diameter": 140,
+        "inner": 119.4
+    },
+    {
+        "diameter": 160,
+        "inner": 136.4
+    },
+    {
+        "diameter": 180,
+        "inner": 153.4
+    },
+    {
+        "diameter": 200,
+        "inner": 170.6
+    },
+    {
+        "diameter": 225,
+        "inner": 191.8
+    },
+    {
+        "diameter": 250,
+        "inner": 213.2
+    },
+    {
+        "diameter": 280,
+        "inner": 238.8
+    },
+    {
+        "diameter": 315,
+        "inner": 250.6
+    },
+    {
+        "diameter": 355,
+        "inner": 302.8
+    },
+    {
+        "diameter": 400,
+        "inner": 341.2
+    },
+    {
+        "diameter": 450,
+        "inner": 383.8
+    },
+    {
+        "diameter": 500,
+        "inner": 426.4
+    },
+    {
+        "diameter": 560,
+        "inner": 477.6
+    },
+    {
+        "diameter": 630,
+        "inner": 537.4
+    },
+    {
+        "diameter": 710,
+        "inner": 605.6
+    },
+    {
+        "diameter": 800,
+        "inner": 682.4
+    },
+    {
+        "diameter": 900,
+        "inner": 767.8
+    },
+    {
+        "diameter": 1000,
+        "inner": 853.2
+    }
+],
+
+"PN16": [
+    {
+        "diameter": 20,
+        "inner": 16
+    },
+    {
+        "diameter": 25,
+        "inner": 20.4
+    },
+    {
+        "diameter": 32,
+        "inner": 26
+    },
+    {
+        "diameter": 40,
+        "inner": 32.6
+    },
+    {
+        "diameter": 50,
+        "inner": 40.8
+    },
+    {
+        "diameter": 63,
+        "inner": 51.4
+    },
+    {
+        "diameter": 75,
+        "inner": 61.4
+    },
+    {
+        "diameter": 90,
+        "inner": 73.6
+    },
+    {
+        "diameter": 110,
+        "inner": 90
+    },
+    {
+        "diameter": 125,
+        "inner": 102.2
+    },
+    {
+        "diameter": 140,
+        "inner": 114.6
+    },
+    {
+        "diameter": 160,
+        "inner": 130.8
+    },
+    {
+        "diameter": 180,
+        "inner": 147.2
+    },
+    {
+        "diameter": 200,
+        "inner": 163.6
+    },
+    {
+        "diameter": 225,
+        "inner": 184
+    },
+    {
+        "diameter": 250,
+        "inner": 204.6
+    },
+    {
+        "diameter": 280,
+        "inner": 229.2
+    },
+    {
+        "diameter": 315,
+        "inner": 257.8
+    },
+    {
+        "diameter": 355,
+        "inner": 290.6
+    },
+    {
+        "diameter": 400,
+        "inner": 327.4
+    },
+    {
+        "diameter": 450,
+        "inner": 368.2
+    },
+    {
+        "diameter": 500,
+        "inner": 409.2
+    },
+    {
+        "diameter": 560,
+        "inner": 458.4
+    },
+    {
+        "diameter": 630,
+        "inner": 515.6
+    },
+    {
+        "diameter": 710,
+        "inner": 581
+    },
+    {
+        "diameter": 800,
+        "inner": 654.8
+    },
+    {
+        "diameter": 900,
+        "inner": 736.6
+    },
+    {
+        "diameter": 1000,
+        "inner": 818.4
+    }
+],
+
+"PN20": [
+    {
+        "diameter": 20,
+        "inner": 15.4
+    },
+    {
+        "diameter": 25,
+        "inner": 19
+    },
+    {
+        "diameter": 32,
+        "inner": 24.8
+    },
+    {
+        "diameter": 40,
+        "inner": 31
+    },
+    {
+        "diameter": 50,
+        "inner": 38.8
+    },
+    {
+        "diameter": 63,
+        "inner": 48.8
+    },
+    {
+        "diameter": 75,
+        "inner": 58.2
+    },
+    {
+        "diameter": 90,
+        "inner": 69.8
+    },
+    {
+        "diameter": 110,
+        "inner": 85.4
+    },
+    {
+        "diameter": 125,
+        "inner": 97
+    },
+    {
+        "diameter": 140,
+        "inner": 108.6
+    },
+    {
+        "diameter": 160,
+        "inner": 124.2
+    },
+    {
+        "diameter": 180,
+        "inner": 139.8
+    },
+    {
+        "diameter": 200,
+        "inner": 155.2
+    },
+    {
+        "diameter": 225,
+        "inner": 174.6
+    },
+    {
+        "diameter": 250,
+        "inner": 194.2
+    },
+    {
+        "diameter": 280,
+        "inner": 217.4
+    },
+    {
+        "diameter": 315,
+        "inner": 244.6
+    },
+    {
+        "diameter": 355,
+        "inner": 275.6
+    },
+    {
+        "diameter": 400,
+        "inner": 310.6
+    },
+    {
+        "diameter": 450,
+        "inner": 349.4
+    },
+    {
+        "diameter": 500,
+        "inner": 388.4
+    },
+    {
+        "diameter": 560,
+        "inner": 435
+    },
+    {
+        "diameter": 630,
+        "inner": 489.4
+    },
+    {
+        "diameter": 710,
+        "inner": 551.4
+    },
+    {
+        "diameter": 800,
+        "inner": 621.4
+    }
+],
+
+"PN25": [
+    {
+        "diameter": 20,
+        "inner": 14
+    },
+    {
+        "diameter": 25,
+        "inner": 18
+    },
+    {
+        "diameter": 32,
+        "inner": 23.2
+    },
+    {
+        "diameter": 40,
+        "inner": 29
+    },
+    {
+        "diameter": 50,
+        "inner": 36.2
+    },
+    {
+        "diameter": 63,
+        "inner": 45.8
+    },
+    {
+        "diameter": 75,
+        "inner": 54.4
+    },
+    {
+        "diameter": 90,
+        "inner": 65.4
+    },
+    {
+        "diameter": 110,
+        "inner": 79.8
+    },
+    {
+        "diameter": 125,
+        "inner": 90.8
+    },
+    {
+        "diameter": 140,
+        "inner": 101.6
+    },
+    {
+        "diameter": 160,
+        "inner": 116.2
+    },
+    {
+        "diameter": 180,
+        "inner": 130.8
+    },
+    {
+        "diameter": 200,
+        "inner": 145.2
+    },
+    {
+        "diameter": 225,
+        "inner": 163.4
+    },
+    {
+        "diameter": 250,
+        "inner": 181.6
+    },
+    {
+        "diameter": 280,
+        "inner": 203.4
+    },
+    {
+        "diameter": 315,
+        "inner": 228.8
+    },
+    {
+        "diameter": 355,
+        "inner": 258
+    },
+    {
+        "diameter": 400,
+        "inner": 290.6
+    },
+    {
+        "diameter": 450,
+        "inner": 327
+    },
+    {
+        "diameter": 500,
+        "inner": 363.4
+    }
+]
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to the Pipe Flow Calculator, your go-to tool for calculating fluid flow in pipes.
+    Calculate head loss of pressurized flow using the Hazen–Williams method, or calculate fullness of gravity flow with the Kutter and Manning methods.
+    Efficiently calculate and analyze pipe flow parameters for various scenarios.">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Pipe Flow Calculator - Pressurized Flow - Gravity Flow</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="text-center banner">
+            <h1>Pipe Flow Calculator</h1>
+            <p style="font-size: 1.75rem; font-weight: 500">Welcome..</p>
+            <div class="mt-5">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" href="/homePage">Home</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Pressurized</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/pressurized/hazenwilliams">Hazen–Williams</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Gravity</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/gravity/kutter">Kutter</a></li>
+                            <li><a class="dropdown-item" href="/gravity/manning">Manning</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/contactMe">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+       
+        
+        <div class="row my-3 p-5 pb-3">
+            <h2 class="p-3">Pressurized Flow</h3>
+            <div class="col-lg-6 col-md-6">
+                <div class="card" style="width: 18rem;">
+                    <h3 class="card-title" style="font-style: oblique" >Hazen–Williams</h4>
+                    <img src="assets/hazen-will.jpg" class="card-image" alt="Hazen Williams Formula">
+                    <div class="card-body">
+                        <a href="/pressurized/hazenwilliams" class="btn btn-primary">Calculate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-3 p-5">
+            <h2 class="p-3">Gravity Flow</h3>
+
+            <div class="col-lg-6 col-sm-6 mb-5">
+
+                    <div class="card" style="width: 18rem;">
+                        <h3 class="card-title" style="font-style: oblique">Kutter</h4>
+                        <img src="assets/kutter.jpg" class="card-image" alt="Kutter Formula">
+                        <div class="card-body">
+                            <a href="/gravity/kutter" class="btn btn-primary">Calculate</a>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="col-lg-6 col-sm-6">
+
+                    <div class="card" style="width: 18rem;">
+                        <h3 class="card-title" style="font-style: oblique">Manning</h4>
+                        <img src="assets/manning.jpg" class="card-image" alt="Manning Formula">
+                        <div class="card-body">
+                            <a href="/gravity/manning" class="btn btn-primary">Calculate</a>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer >
+        <div class="footer p-2">
+            <p class="m-0">©2024, NGG - All rights reserved.</p>
+            <a href="mailto:n.gokcenguner@gmail.com" class="m-0">n.gokcenguner@gmail.com</a>
+            
+        </div>
+        
+    </footer>
+
+    
+    
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

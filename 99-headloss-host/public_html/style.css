@@ -1,0 +1,212 @@
+body {
+    background-image: url("assets/background.jpg");
+    backdrop-filter: blur(1.5px);
+
+}
+
+.container {
+    background: rgb(231, 206, 174); /* rgb(237, 187, 121); */
+    opacity: 0.9;
+    
+    min-height: 1000px;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0;
+    border-radius: 50px;
+
+}
+
+.banner {
+    /* background: rgb(193, 151, 96); */
+    background-image: linear-gradient(to bottom right, rgb(148, 201, 202), rgb(193, 151, 96));
+    
+    padding-top: 100px;
+    border-radius: 50px 0;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    font-style: oblique;
+}
+
+.footer {
+    background: rgb(148, 201, 202); 
+    text-align: center;
+    padding-top: 12px;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: black;
+}
+
+.nav-link:hover {
+    color: white;
+    }
+
+.nav-tabs {
+    --bs-nav-tabs-link-active-bg:rgb(231, 206, 174);
+    --bs-nav-tabs-link-active-border-color: rgb(231, 206, 174);
+}
+
+:root {
+    --bs-link-hover-color:black;
+    --bs-border-color:rgb(231, 206, 174);
+    --bs-secondary-bg: rgb(231, 206, 174);
+}
+
+.btn-primary {
+    --bs-btn-bg:rgb(148, 201, 202);
+    --bs-btn-color:black;
+    --bs-btn-hover-bg: rgb(103, 154, 155);
+    --bs-btn-hover-border-color: rgb(148, 201, 202);
+    --bs-btn-border-color: rgb(103, 154, 155);
+    --bs-btn-active-bg:rgb(148, 201, 202);
+    --bs-btn-active-border-color: rgb(103, 154, 155);
+    --bs-btn-disabled-bg : rgb(148, 201, 202);
+    --bs-btn-disabled-border-color: rgb(103, 154, 155);
+
+}
+
+.card-image {
+    border-style: groove;
+    border-width: 3px 5px 5px 10px;
+    margin: 16px 16px 0 16px;
+    border-radius: 0.375rem 0.375rem 0 0;
+}
+
+.card-title {
+    padding: 20px 0 2px 0  ;
+    text-align: center;
+}
+
+.card-image:hover {
+    transform: scale(0.90); 
+    transition: transform 0.3s ease;
+}
+
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: rgb(148, 201, 202);
+}
+
+.btn-outline-primary {
+    --bs-btn-color:black;
+    --bs-btn-border-color: rgb(103, 154, 155);
+    --bs-btn-active-bg:rgb(103, 154, 155);
+    --bs-btn-active-border-color:rgb(103, 154, 155);
+}
+
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.result {
+    margin: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+
+.form-control:disabled {
+    background-color: rgb(235, 226, 226);
+}
+
+.danger {
+    color: red;
+}
+
+/* CONTACT ICIN */
+.form-contact {
+    position: relative;
+    display: block;
+}
+
+.form-contact span {
+
+    position: absolute;
+    top: 9px;
+    left: 2px;
+    transition: all 0.2s ease;
+    transform-origin: 0 0; 
+    cursor: text; 
+    font-style: oblique;
+    font-weight: bolder;
+    color: #5f6266;
+}
+
+
+
+
+.form-input {
+    border: none;
+    border-bottom: 3px solid #fff;
+    display: block;
+    width: 100%;
+    height: 43px;
+    
+    background: none;
+    font-style: oblique;
+    
+}
+
+
+.form-input:focus, .form-input:valid {
+    outline: none;
+    background: none;
+    border: none;
+    border-bottom: 3px solid rgb(103, 154, 155);
+    
+}
+
+.form-input:focus + span, .form-input:valid + span {
+    color: black;
+    transform: translateX(-110px) scale(1); 
+    /* transform: translateY(-22px) scale(0.8);   */
+}
+
+.form-input:invalid {    
+    border-bottom: 3px solid #fff;
+}
+
+.form-contact textarea {
+    min-height: 75px;
+}
+
+
+/* ------------ */
+
+#bigScreen {
+    padding-right: 150px;
+}
+ @media only screen and (max-width:700px) {
+    #bigScreen {
+        padding-right: 30px;
+    }
+    #bigScreen div {
+        
+        padding:  0;
+        
+    }
+
+    #bigScreen div select {
+        font-size: 0.8rem;
+        padding:  8.5px 10px;
+    }
+
+    #bigScreen div .unit {
+        font-size: 0.8rem;
+        padding:  8.5px 10px;
+    }
+
+    .form-input:focus + span, .form-input:valid + span {
+        color: black;
+        
+        transform: translateY(-22px) scale(0.8);   
+    }
+
+    .card {
+        font-size: 0.8rem;
+    }
+} 

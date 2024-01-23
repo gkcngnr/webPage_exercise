@@ -1,0 +1,247 @@
+{
+    "C30": [
+        {
+            "diameter": 350,
+            "outer": 378,
+            "thickness": 4.7,
+            "lining": 5
+        },
+        {
+            "diameter": 400,
+            "outer": 429,
+            "thickness": 4.8,
+            "lining": 5
+        },
+        {
+            "diameter": 450,
+            "outer": 480,
+            "thickness": 5.1,
+            "lining": 5
+        },
+        {
+            "diameter": 500,
+            "outer": 532,
+            "thickness": 5.6,
+            "lining": 5
+        },
+        {
+            "diameter": 600,
+            "outer": 635,
+            "thickness": 6.7,
+            "lining": 5
+        },
+        {
+            "diameter": 700,
+            "outer": 738,
+            "thickness": 7.8,
+            "lining": 6
+        },
+        {
+            "diameter": 800,
+            "outer": 842,
+            "thickness": 8.9,
+            "lining": 6
+        },
+        {
+            "diameter": 900,
+            "outer": 945,
+            "thickness": 10,
+            "lining": 6
+        },
+        {
+            "diameter": 1000,
+            "outer": 1048,
+            "thickness": 11.1,
+            "lining": 6
+        },
+        {
+            "diameter": 1100,
+            "outer": 1152,
+            "thickness": 12.2,
+            "lining": 6
+        },
+        {
+            "diameter": 1200,
+            "outer": 1255,
+            "thickness": 13.3,
+            "lining": 6
+        },
+        {
+            "diameter": 1400,
+            "outer": 1462,
+            "thickness": 15.5,
+            "lining": 9
+        },
+        {
+            "diameter": 1500,
+            "outer": 1565,
+            "thickness": 16.6,
+            "lining": 9
+        },
+        {
+            "diameter": 1600,
+            "outer": 1668,
+            "thickness": 17.7,
+            "lining": 9
+        },
+        {
+            "diameter": 1800,
+            "outer": 1875,
+            "thickness": 19.9,
+            "lining": 9
+        },
+        {
+            "diameter": 2000,
+            "outer": 2082,
+            "thickness": 22.1,
+            "lining": 9
+        },
+        {
+            "diameter": null,
+            "outer": null,
+            "thickness": null,
+            "lining": null
+        },
+        {
+            "diameter": null,
+            "outer": null,
+            "thickness": null,
+            "lining": null
+        }
+    ],
+    "C40": [
+        {
+            "diameter": 40,
+            "outer": 56,
+            "thickness": 3,
+            "lining": 4
+        },
+        {
+            "diameter": 50,
+            "outer": 66,
+            "thickness": 3,
+            "lining": 4
+        },
+        {
+            "diameter": 60,
+            "outer": 77,
+            "thickness": 3,
+            "lining": 4
+        },
+        {
+            "diameter": 65,
+            "outer": 82,
+            "thickness": 3,
+            "lining": 4
+        },
+        {
+            "diameter": 80,
+            "outer": 98,
+            "thickness": 3,
+            "lining": 4
+        },
+        {
+            "diameter": 100,
+            "outer": 118,
+            "thickness": 3,
+            "lining": 4
+        },
+        {
+            "diameter": 125,
+            "outer": 144,
+            "thickness": 3,
+            "lining": 4
+        },
+        {
+            "diameter": 150,
+            "outer": 170,
+            "thickness": 3,
+            "lining": 4
+        },
+        {
+            "diameter": 200,
+            "outer": 222,
+            "thickness": 3.1,
+            "lining": 4
+        },
+        {
+            "diameter": 250,
+            "outer": 274,
+            "thickness": 3.9,
+            "lining": 4
+        },
+        {
+            "diameter": 300,
+            "outer": 326,
+            "thickness": 4.6,
+            "lining": 4
+        },
+        {
+            "diameter": 350,
+            "outer": 378,
+            "thickness": 5.3,
+            "lining": 5
+        },
+        {
+            "diameter": 400,
+            "outer": 429,
+            "thickness": 6,
+            "lining": 5
+        },
+        {
+            "diameter": 450,
+            "outer": 480,
+            "thickness": 6.8,
+            "lining": 5
+        },
+        {
+            "diameter": 500,
+            "outer": 532,
+            "thickness": 7.5,
+            "lining": 5
+        },
+        {
+            "diameter": 600,
+            "outer": 635,
+            "thickness": 8.9,
+            "lining": 5
+        },
+        {
+            "diameter": 700,
+            "outer": 738,
+            "thickness": 10.4,
+            "lining": 6
+        },
+        {
+            "diameter": 800,
+            "outer": 842,
+            "thickness": 11.9,
+            "lining": 6
+        },
+        {
+            "diameter": 900,
+            "outer": 945,
+            "thickness": 13.3,
+            "lining": 6
+        },
+        {
+            "diameter": 1000,
+            "outer": 1048,
+            "thickness": 14.8,
+            "lining": 6
+        },
+        {
+            "diameter": 1100,
+            "outer": 1152,
+            "thickness": 16.2,
+            "lining": 6
+        },
+        {
+            "diameter": 1200,
+            "outer": 1255,
+            "thickness": 17.7,
+            "lining": 6
+        }
+    ]
+
+}
