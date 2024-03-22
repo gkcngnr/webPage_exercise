@@ -1,0 +1,38 @@
+<div class="main">
+
+  <div class="card">
+    <h1 class="title has-text-centered">Harf Eşleştirme</h1>
+    <p class="has-text-centered">
+      <span [class]="isCorrect(letter, enteredText[i])"
+        *ngFor="let letter of text.split('');let i=index">{{letter}}</span>
+    </p>
+
+    <input [disabled]="enteredText.length >=text.length" class="input" type="text" #inputElement
+      (keyup)="entered(inputElement.value)" (keydown)="start()" (keyup)="stopWatch($event)">
+    <p class="correct" *ngIf="enteredText.length === text.length">
+      Correct = {{totalCorrect}}
+    </p>
+    <p class="incorrect" *ngIf="enteredText.length === text.length">
+      Incorrect = {{totalIncorrect}}
+    </p>
+
+
+    <h1 class="title" *ngIf="enteredText === text">Bravo!</h1>
+
+    <div class="but">
+      <button (click)="refreshPage()" class="button is-primary is-fullwidth"><span style="color: black;">Tekrar
+          Dene</span></button>
+    </div>
+
+    <div class="clock">
+      <p><span>{{secondScreen}}</span>:<span>{{tensScreen}}</span></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+
+</script>

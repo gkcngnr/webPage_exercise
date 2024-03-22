@@ -1,0 +1,48 @@
+.main {
+    display: flex;
+    min-height: 930px;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: purple;
+
+}
+
+.card {
+    width: 500px;
+    padding: 40px;
+    position: relative;
+    height: 270px;
+    margin-top: 200px;
+}
+
+.nothing {
+    color:black
+}
+
+.correct {
+    margin-top: 5px;
+    color:green;
+    font-weight: bold
+}
+
+.incorrect {
+    color:red;
+    font-weight: bold
+}
+
+.but {
+    bottom: 0;
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
+}
+
+.clock {
+    position: absolute;
+    top:10px;
+    right:30px;
+    font-size: larger;
+    border: 2px solid purple;
+    padding: 0 5px;
+    border-radius: 10px
+}
