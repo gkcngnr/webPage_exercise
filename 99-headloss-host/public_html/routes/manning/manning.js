@@ -104,12 +104,12 @@ function fullnessCalc() {
     const manningCoef = parseFloat(coefficient.value);
 
     const calculatedK =  ( calculatedFlowrate/1000 * manningCoef ) / ((pipeDN/1000) ** (8/3) * (pipeSlope ** 0.5))
-    console.log(calculatedK)
+
     for (let i=0; i<manningTable.length; i++) {
         const diff = Math.abs(calculatedK - manningTable[i]);
         
         if (diff < epsilon) {
-            console.log(diff)
+
             fullness = i;
             waterLvl = i*pipeDN/100;
             velocityCalc(fullness, pipeDN);
@@ -148,8 +148,14 @@ function fullnessCalc() {
 //sonuçları yazdırma
 let resultCount = 0;
 function resultsContainer() {
+    let resultContCount;
+    if (window.innerWidth < 700) {
+        resultContCount = 2
+    } else {
+        resultContCount = 3
+    }
     resultCount++
-    if (results.children.length >= 3) {
+    if (results.children.length >= resultContCount) {
         results.removeChild(results.firstElementChild);
         
     }

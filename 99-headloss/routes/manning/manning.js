@@ -104,12 +104,12 @@ function fullnessCalc() {
     const manningCoef = parseFloat(coefficient.value);
 
     const calculatedK =  ( calculatedFlowrate/1000 * manningCoef ) / ((pipeDN/1000) ** (8/3) * (pipeSlope ** 0.5))
-    console.log(calculatedK)
+
     for (let i=0; i<manningTable.length; i++) {
         const diff = Math.abs(calculatedK - manningTable[i]);
         
         if (diff < epsilon) {
-            console.log(diff)
+
             fullness = i;
             waterLvl = i*pipeDN/100;
             velocityCalc(fullness, pipeDN);
