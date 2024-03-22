@@ -1,0 +1,24 @@
+.about {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: scroll;
+}
+.aboutImg {
+    width: 70%;
+    margin-top: 20px;
+
+
+}
+
+.aboutContent {
+  width: 70%;
+}
+
+.about h1 {
+  margin-bottom: 0;
+}
+

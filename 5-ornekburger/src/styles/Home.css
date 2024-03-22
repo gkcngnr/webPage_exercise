@@ -1,0 +1,50 @@
+.home {
+    width: 100%;
+}
+.homeContent {
+    height: 75vh;
+    position: relative;
+    background-image: url('../assets/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+.homeContent a {
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    margin-left:100px ;
+    background-color: rgba(231, 169, 52, 1);
+    padding: 12px 200px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+.homeContent a:visited {
+    color:black;
+    font-weight: bolder;
+  } 
+
+.homeContent a:hover {
+color:white;
+background-color: rgb(224, 157, 31);
+} 
+
+  @media (max-width: 700px) {
+    .homeContent a {
+
+        padding: 12px 30px;
+
+    }
+  }
+
+  @media (max-width: 700px) {
+    .homeContent a {
+
+        left: 10px;
+
+    }
+  }
